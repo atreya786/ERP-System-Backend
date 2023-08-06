@@ -6,6 +6,7 @@ const staffSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   phone: { type: Number, required: true, unique: true },
+  salary: { type: Number, required: true },
   SID: { type: String, required: true, unique: true },
   subject: { type: String, required: true },
   role: { type: String, required: true },

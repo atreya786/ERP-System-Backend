@@ -1,11 +1,17 @@
-// models/examination.js
+// models/exam.js
 import mongoose from "mongoose";
 
-const examinationSchema = new mongoose.Schema({
-  examName: { type: String, required: true },
-  date: { type: Date, required: true },
+const examSchema = new mongoose.Schema({
+  date: {
+    type: Date,
+    required: true,
+  },
+  subject: {
+    type: String,
+    required: true,
+  },
 });
 
-const Examination = mongoose.model("Examination", examinationSchema);
+const Exam = mongoose.model("Exam", examSchema);
 
-export default Examination;
+export default Exam;

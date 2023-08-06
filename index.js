@@ -8,6 +8,13 @@ import studentRoutes from "./routes/student.js";
 import staffRoutes from "./routes/staff.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
+import accountRoutes from "./routes/accounts.js";
+import libraryRoutes from "./routes/library.js";
+import palcementRoutes from "./routes/placement.js";
+import jobRouter from "./routes/job.js";
+import examRouter from "./routes/examination.js";
+import attendanceRouter from "./routes/attendance.js";
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -20,5 +27,11 @@ app.use("/api", studentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api", staffRoutes);
 app.use("/api", userRoutes);
+app.use("/api", libraryRoutes);
+app.use("/api/account", accountRoutes);
+app.use("/api", palcementRoutes);
+app.use("/api/jobs", jobRouter);
+app.use("/api/exams", examRouter);
+app.use("/api", attendanceRouter);
 
 app.listen(5000, () => console.log("Server started on port 5000"));

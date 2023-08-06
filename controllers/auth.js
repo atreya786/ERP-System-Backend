@@ -11,8 +11,29 @@ const secretKey = "subarna"; // Replace this with your actual secret key
 
 export const signup = async (req, res) => {
   try {
-    const { name, email, password, section, branch, SIC, rollNo, phone, role } =
-      req.body;
+    const {
+      name,
+      email,
+      password,
+      section,
+      branch,
+      SIC,
+      rollNo,
+      phone,
+      role,
+      dues,
+      packageSal,
+      sub1,
+      sub2,
+      sub3,
+      sub4,
+      sub5,
+      fine,
+      issueDate,
+      returnDate,
+      company,
+      book,
+    } = req.body;
 
     // Check if the email already exists
     const existingStudent = await Student.findOne({ email });
@@ -34,6 +55,18 @@ export const signup = async (req, res) => {
       rollNo,
       phone,
       role,
+      dues,
+      packageSal,
+      sub1,
+      sub2,
+      sub3,
+      sub4,
+      sub5,
+      fine,
+      issueDate,
+      returnDate,
+      company,
+      book,
     });
     await newStudent.save();
 

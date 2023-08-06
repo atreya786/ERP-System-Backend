@@ -11,7 +11,6 @@ export const getUserById = async (req, res) => {
       (await Admin.findById(userId)) ||
       (await Staff.findById(userId));
     res.json(user);
-    console.log(user)
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
@@ -29,7 +28,7 @@ export const updateUserProfile = async (req, res) => {
     if (role === "Student") {
       user = await StudentList.findByIdAndUpdate(
         userId,
-        { name, email, phone, SIC, branch, section },
+        { name, email, phone, SID, SIC, branch, section },
         { new: true }
       );
     } else if (role === "Staff") {
@@ -41,7 +40,7 @@ export const updateUserProfile = async (req, res) => {
     } else if (role === "Admin") {
       user = await Admin.findByIdAndUpdate(
         userId,
-        { name, email, phone, AID },
+        { name, email, phone },
         { new: true }
       );
     } else {
