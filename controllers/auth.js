@@ -23,11 +23,6 @@ export const signup = async (req, res) => {
       role,
       dues,
       packageSal,
-      sub1,
-      sub2,
-      sub3,
-      sub4,
-      sub5,
       fine,
       issueDate,
       returnDate,
@@ -57,11 +52,6 @@ export const signup = async (req, res) => {
       role,
       dues,
       packageSal,
-      sub1,
-      sub2,
-      sub3,
-      sub4,
-      sub5,
       fine,
       issueDate,
       returnDate,
@@ -94,6 +84,7 @@ export const studentLogin = async (req, res) => {
     const data = {
       user: {
         id: user._id,
+        name:user.name,
         role: "Student",
       },
     };
@@ -123,6 +114,7 @@ export const adminLogin = async (req, res) => {
     const data = {
       user: {
         id: admin._id,
+        name:admin.name,
         role: "Admin",
       },
     };
@@ -152,6 +144,8 @@ export const staffLogin = async (req, res) => {
     const data = {
       user: {
         id: staff._id,
+        name:staff.name,
+        subject:staff.subject,
         role: "Staff",
       },
     };

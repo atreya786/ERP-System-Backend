@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const connectToDB = async() => {
+export const connectToDB = async () => {
   await mongoose
     .connect(
       "mongodb+srv://Atreya-Chandan:Atreya786@my-db.0l8w9lc.mongodb.net/?retryWrites=true&w=majority"

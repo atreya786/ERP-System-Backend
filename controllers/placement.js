@@ -11,14 +11,15 @@ export const getAllPlacements = async (req, res) => {
   }
 };
 
-// Update placement data by UserId
+
+
 export const updatePlacementById = async (req, res) => {
   try {
-    const { SIC } = req.params.SIC;
+    const id = req.params.id;
     const { company, packageSal } = req.body;
 
     const updatedPlacement = await StudentList.findOneAndUpdate(
-      { SIC },
+      { _id: id }, // Use _id instead of id
       { company, packageSal },
       { new: true }
     );
@@ -29,6 +30,7 @@ export const updatePlacementById = async (req, res) => {
 
     res.json(updatedPlacement);
   } catch (error) {
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error });
   }
 };
+

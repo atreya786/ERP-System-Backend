@@ -39,3 +39,18 @@ export const getAllAttendance = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+export const getAtt = async (req, res) => {
+  try {
+    const id = req.query.id; // Using req.query to access query parameters
+    const targetDate = req.query.date;
+    
+    const attendanceRecords = await Attendance.find(
+      { 'attendance.id': id, date: targetDate },
+      { 'subject': 1, 'date': 1, 'attendance.$': 1 }
+    );
+
+    res.json(attendanceRecords);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};

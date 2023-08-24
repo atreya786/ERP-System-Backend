@@ -14,13 +14,13 @@ export const getAllExams = async (req, res) => {
 // Add a new exam
 export const addExam = async (req, res) => {
   try {
-    const { date, subject } = req.body;
+    const { examname,date,time ,subject } = req.body;
 
-    if (!date || !subject) {
+    if (!examname || !date || !time|| !subject) {
       return res.status(400).json({ error: "Please provide all fields" });
     }
 
-    const newExam = new Exam({ date, subject });
+    const newExam = new Exam({ examname,date,time, subject });
     await newExam.save();
 
     res.json(newExam);

@@ -24,3 +24,15 @@ export const addJob = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+
+// Delete an job by ID
+export const deleteJobById = async (req, res) => {
+  try {
+    const jobId = req.params.id;
+    await Job.findByIdAndDelete(jobId);
+    res.json({ message: "Exam deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};

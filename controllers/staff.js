@@ -5,7 +5,7 @@ import Staff from "../models/staff.js";
 // Function to create a new staff
 export const createStaff = async (req, res) => {
   try {
-    const { name, email, password, role, subject, SID, phone } = req.body;
+    const { name, email, password, role, subject, SID, phone,salary } = req.body;
 
     // Check if the email already exists
     const existingStaff = await Staff.findOne({ email });
@@ -24,6 +24,7 @@ export const createStaff = async (req, res) => {
       subject,
       SID,
       phone,
+      salary,
     });
     const savedStaff = await newStaff.save();
     // console.log(savedStaff);
@@ -71,6 +72,18 @@ export const editStaffBySID = async (req, res) => {
       return res.status(404).json({ error: "Staff not found" });
     }
     res.json(updatedStaff);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+// Function to get staff data by ID
+export const getParticularStaff = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = (await Staff.findById(userId));
+    res.json(user);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }

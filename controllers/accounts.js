@@ -11,6 +11,14 @@ export const getAccountById = async (req, res) => {
   }
 };
 
+
+
+
+
+
+
+
+
 // Function to get account data by ID
 export const getAccounts = async (req, res) => {
   try {

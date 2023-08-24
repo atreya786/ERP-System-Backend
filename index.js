@@ -14,6 +14,7 @@ import palcementRoutes from "./routes/placement.js";
 import jobRouter from "./routes/job.js";
 import examRouter from "./routes/examination.js";
 import attendanceRouter from "./routes/attendance.js";
+import dmsrouter from "./routes/dms.js"
 
 
 const app = express();
@@ -33,5 +34,6 @@ app.use("/api", palcementRoutes);
 app.use("/api/jobs", jobRouter);
 app.use("/api/exams", examRouter);
 app.use("/api", attendanceRouter);
+app.use("/api/dms", dmsrouter);
 
 app.listen(5000, () => console.log("Server started on port 5000"));

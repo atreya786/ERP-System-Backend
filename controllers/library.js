@@ -11,25 +11,32 @@ export const getLibData = async (req, res) => {
 
 export const getLibDataById = async (req, res) => {
   try {
-    const { SIC } = req.params.SIC;
-    const data = await StudentList.findOne({ SIC });
+    const id = req.params.id;
+    const data = await StudentList.findById(id);
     res.json(data);
   } catch (error) {
-    res.status(500).json({ error: "Server error" });
-  }
+    res.status(500).json({ error: "Server error" });
+}
 };
 
 export const updateLibDataById = async (req, res) => {
   try {
-    const { SIC } = req.params.SIC;
-    const newData = req.body;
+    const id = req.params.id;
+    const { issueDate,returnDate,book} = req.body;
 
-    const updatedData = await StudentList.findByIdAndUpdate(SIC, newData, {
-      new: true,
-    });
 
-    res.json(updatedData);
+    const updatedLibrary = await StudentList.findOneAndUpdate(
+      { _id: id },
+      { issueDate, returnDate,book },
+      {new:true}
+    );
+
+    if (!updatedLibrary) {
+      return res.status(404).json({ error: "Libaray data not found" });
+    }
+
+    res.json(updatedLibrary);
   } catch (error) {
-    res.status(500).json({ error: "Server error" });
-  }
+    res.status(500).json({ error })
 };
+}

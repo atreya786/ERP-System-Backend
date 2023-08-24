@@ -2,9 +2,14 @@
 import mongoose from "mongoose";
 
 const examSchema = new mongoose.Schema({
+  examname: { type: String, required: true },
   date: {
-    type: Date,
+    type: String,
     required: true,
+  },
+  time:{
+    type:String,
+    required :true,
   },
   subject: {
     type: String,
